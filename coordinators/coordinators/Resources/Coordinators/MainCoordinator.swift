@@ -19,7 +19,7 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        var vc: UIViewController & MainCoordinating  = ViewController()
+        var vc: UIViewController & MainCoordinating  = FirstViewController()
         vc.coordinator = self
         navigationController?.setViewControllers([vc],
                                                  animated: true)
@@ -28,8 +28,7 @@ class MainCoordinator: Coordinator {
     func flowToSecondVC(textField: String) {
         var vc: UIViewController & MainCoordinating = SecondViewController(data: textField)
         vc.coordinator = self
-        navigationController?.setViewControllers([vc],
-                                                 animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func login(textField: String) {
