@@ -22,33 +22,33 @@ class AuthCoordinator: Coordinator {
         self.data = data
     }
     
-    func eventOccurred(with type: Event, data: Any?) {
-        switch type {
-        case .buttonTapped: break
-            // nothing
-        case .loginTapped:
-            login()
-        case .registerTapped:
-            register()
-        }
-        
-    }
+//    func eventOccurred(with type: Event, data: Any?) {
+//        switch type {
+//        case .buttonTapped: break
+//            // nothing
+//        case .loginTapped:
+//            login()
+//        case .registerTapped:
+//            register()
+//        }
+//        
+//    }
     
     func start() {
         // nothing
     }
     
-    func login () {
-        var vc: UIViewController & Coordinating = LoginViewController(data: data as! String)
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func register () {
-        var vc: UIViewController & Coordinating = RegisterViewController(data: data as! String)
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    func login () {
+//        var vc: UIViewController & MainCoordinated = LoginViewController(data: data)
+//        vc.coordinator = self
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//
+//    func register () {
+//        var vc: UIViewController & MainCoordinated = RegisterViewController(data: data)
+//        vc.coordinator = self
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
     
     
 }

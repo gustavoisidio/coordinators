@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, Coordinating {
+class ViewController: UIViewController, MainCoordinating{
     
-    var coordinator: Coordinator?
+    var coordinator: MainCoordinator?
     
     var valueTextField: String!
     
@@ -23,6 +23,16 @@ class ViewController: UIViewController, Coordinating {
         
         makeUI()
 
+    }
+    
+    init(textField: String = "EMPTY") {
+        self.valueTextField = textField
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func makeUI() {
@@ -54,7 +64,7 @@ class ViewController: UIViewController, Coordinating {
  
     @objc func didTapButton () {
         self.valueTextField = textInput?.text
-        coordinator?.eventOccurred(with: .buttonTapped, data: self.valueTextField)
+        coordinator?.flowToSecondVC(textField: valueTextField!)
     }
 }
     

@@ -14,79 +14,39 @@ class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController?
     
-    var data: Any?
-    
-    init(navigationController: UINavigationController, data: Any?) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.data = data
-    }
-    
-    func eventOccurred(with type: Event, data: Any?) {
-        switch type {
-        case .buttonTapped:
-            var vc: UIViewController & Coordinating  = SecondViewController(data: data as! String)
-            vc.coordinator = self
-            navigationController?.pushViewController(vc, animated: true)
-        case .loginTapped:
-            login(data: data)
-        case .registerTapped:
-            register(data: data)
-        }
     }
     
     func start() {
-        var vc: UIViewController & Coordinating = ViewController()
+        var vc: UIViewController & MainCoordinating  = ViewController()
         vc.coordinator = self
         navigationController?.setViewControllers([vc],
                                                  animated: true)
     }
     
-    func login(data: Any?) {
-        let child = AuthCoordinator(navigationController: navigationController!, data: data)
-        child.parentCoordinator = self
-        childCoordinators?.append(child)
-        child.login()
+    func flowToSecondVC(textField: String) {
+        var vc: UIViewController & MainCoordinating = SecondViewController(data: textField)
+        vc.coordinator = self
+        navigationController?.setViewControllers([vc],
+                                                 animated: true)
     }
     
-    func register(data: Any?) {
-        let child = AuthCoordinator(navigationController: navigationController!, data: data)
-        child.parentCoordinator = self
-        childCoordinators?.append(child)
-        child.register()
+    func login(textField: String) {
+        var vc: UIViewController & MainCoordinating = LoginViewController(data: textField)
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func register(textField: String) {
+        var vc: UIViewController & MainCoordinating = RegisterViewController(data: textField)
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
 }
 
-
-
-
-//class ACoordinator {
-//...
-//func submit(_ phone: String) {
-//    let coordinator = BCoordinator(phone: phone)
-//    ...
-//}
-//...
-//}
-//
-//class BCoordinator {
-//...
-//let phone: String
-//init(phone: String) {
-//    self.phone = phone
-//    ...
-//}
-//...
-//}
-//
-//class AViewController: UIViewController {
-//    ...
-//    weak var coordinator: ACoordinator?
-//    ...
-//    @objc func didPressSubmit(_ sender: UIButton) {
-//         coordinator?.submit(txtField.text ?? "")
-//    }
-//    ...
-//    }
-
+protocol MainCoordinating {
+    var coordinator: MainCoordinator? { get set }
+}

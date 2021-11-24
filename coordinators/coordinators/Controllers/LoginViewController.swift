@@ -7,8 +7,8 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, Coordinating {
-    var coordinator: Coordinator?
+class LoginViewController: UIViewController, MainCoordinating {
+    var coordinator: MainCoordinator?
     
     var data: String?
     

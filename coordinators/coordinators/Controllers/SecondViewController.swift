@@ -7,8 +7,9 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, Coordinating {
-    var coordinator: Coordinator?
+class SecondViewController: UIViewController, MainCoordinating{
+    var coordinator: MainCoordinator?
+    
     var data: String
 
     override func viewDidLoad() {
@@ -56,11 +57,11 @@ class SecondViewController: UIViewController, Coordinating {
     }
     
     @objc func didTapLogin () {
-        coordinator?.eventOccurred(with: .loginTapped, data: data)
+        coordinator?.login(textField: data)
     }
     
     @objc func didTapRegister () {
-        coordinator?.eventOccurred(with: .registerTapped, data: data)
+        coordinator?.register(textField: data)
     }
     
 
