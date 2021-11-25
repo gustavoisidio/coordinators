@@ -15,23 +15,6 @@ protocol Coordinator {
     
     func start ()
 }
-//
-//class CoordinatorClass: Coordinator {
-//    var parentCoordinator: Coordinator?
-//    
-//    var childCoordinators: [Coordinator]?
-//    
-//    var navigationController: UINavigationController?
-//    
-//    func start() {
-//        
-//    }
-//    
-//}
-//
-//class SecondCoordinatorClass: CoordinatorClass {
-//    var parentCoordinator: CoordinatorClass?
-//}
 
 protocol Coordinating {
     var coordinator: Coordinator? { get set }

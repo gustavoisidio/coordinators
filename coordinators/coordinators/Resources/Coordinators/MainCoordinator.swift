@@ -26,43 +26,16 @@ class MainCoordinator: Coordinator {
         navigationController?.setViewControllers([vc],
                                                  animated: true)
     }
-    
-    func flowToSecondVC(textField: String) {
-        var vc: UIViewController & MainCoordinating = SecondViewController(data: textField)
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func login(textField: String) {
-        var vc: UIViewController & MainCoordinating = LoginViewController(data: textField)
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func register(textField: String) {
-        var vc: UIViewController & MainCoordinating = RegisterViewController(data: textField)
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func flowToAuth () {
-        let newNavController = UINavigationController()
-        let child = AuthCoordinator(navigationController: newNavController)
+     
+    func flowToAuth (textField: String) {
+        let child = AuthCoordinator(navigationController: navigationController!)
         childCoordinators?.append(child)
-        child.start()
+        child.parentCoordinator = self
+        child.start(textField: textField)
     }
-    
     
 }
 
 protocol MainCoordinating {
     var coordinator: MainCoordinator? { get set }
 }
-//protocol MainCoordinatorProtocol {
-//    var coordinator: MainCoordinator? { get set }
-//    var parentCoordinator: MainCoordinator? { get set }
-//    var childCoordinators: [MainCoordinator]? { get set }
-//    var navigationController: UINavigationController? { get set }
-//    
-//    func start ()
-//}

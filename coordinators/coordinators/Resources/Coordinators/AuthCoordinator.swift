@@ -17,14 +17,29 @@ class AuthCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.parentCoordinator = MainCoordinator(navigationController: navigationController)
     }
-    
     
     func start() {
-        // nothing
+
     }
     
+    func start(textField: String) {
+        var vc: UIViewController & AuthCoordinating = SecondViewController(data: textField)
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func login(textField: String) {
+        var vc: UIViewController & AuthCoordinating = LoginViewController(data: textField)
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func register(textField: String) {
+        var vc: UIViewController & AuthCoordinating = RegisterViewController(data: textField)
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 protocol AuthCoordinating {

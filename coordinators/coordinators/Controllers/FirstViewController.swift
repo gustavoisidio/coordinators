@@ -59,7 +59,7 @@ class FirstViewController: UIViewController, MainCoordinating{
     
     @objc func didTapButton () {
         self.valueTextField = contentView.textInput.text
-        coordinator?.flowToSecondVC(textField: valueTextField!)
+        coordinator?.flowToAuth(textField: valueTextField!)
     }
 }
     

@@ -7,8 +7,8 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, MainCoordinating {
-    var coordinator: MainCoordinator?
+class RegisterViewController: UIViewController, AuthCoordinating {
+    var coordinator: AuthCoordinator?
     
     var data: String?
     

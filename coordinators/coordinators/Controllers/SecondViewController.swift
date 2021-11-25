@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, MainCoordinating{
+class SecondViewController: UIViewController, AuthCoordinating{
 
     // MARK: - Initializers
-    var coordinator: MainCoordinator?
+    var coordinator: AuthCoordinator?
     
     lazy var contentView = SecondView()
 
@@ -31,8 +31,6 @@ class SecondViewController: UIViewController, MainCoordinating{
 
         // Do any additional setup after loading the view.
         title = "Second"
-//        view.backgroundColor = .yellow
-        
         
         contentView.label.text = self.data
         

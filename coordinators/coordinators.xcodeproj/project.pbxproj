@@ -20,8 +20,6 @@
 		57B536B2274DF31C00662465 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B536B1274DF31C00662465 /* AuthCoordinator.swift */; };
 		57FA6243274EED64001A83C3 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA6242274EED64001A83C3 /* FirstView.swift */; };
 		57FA6245274EED7B001A83C3 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA6244274EED7B001A83C3 /* SecondView.swift */; };
-		57FA6247274EED8C001A83C3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA6246274EED8C001A83C3 /* LoginView.swift */; };
-		57FA6249274EED97001A83C3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA6248274EED97001A83C3 /* RegisterView.swift */; };
 		57FA624B274EEDF4001A83C3 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA624A274EEDF4001A83C3 /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +39,6 @@
 		57B536B1274DF31C00662465 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		57FA6242274EED64001A83C3 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		57FA6244274EED7B001A83C3 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
-		57FA6246274EED8C001A83C3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		57FA6248274EED97001A83C3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		57FA624A274EEDF4001A83C3 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,8 +117,6 @@
 			children = (
 				57FA6242274EED64001A83C3 /* FirstView.swift */,
 				57FA6244274EED7B001A83C3 /* SecondView.swift */,
-				57FA6246274EED8C001A83C3 /* LoginView.swift */,
-				57FA6248274EED97001A83C3 /* RegisterView.swift */,
 				57B53697274D812C00662465 /* Assets.xcassets */,
 				57FA624C274EF22D001A83C3 /* Storyboard */,
 			);
@@ -209,12 +203,10 @@
 			files = (
 				57B536AE274DF1DE00662465 /* LoginViewController.swift in Sources */,
 				57FA6243274EED64001A83C3 /* FirstView.swift in Sources */,
-				57FA6249274EED97001A83C3 /* RegisterView.swift in Sources */,
 				57B536A7274DA6FB00662465 /* SecondViewController.swift in Sources */,
 				57B536A3274DA2DA00662465 /* Coordinator.swift in Sources */,
 				57B536B0274DF1EC00662465 /* RegisterViewController.swift in Sources */,
 				57FA6245274EED7B001A83C3 /* SecondView.swift in Sources */,
-				57FA6247274EED8C001A83C3 /* LoginView.swift in Sources */,
 				57B53693274D812600662465 /* FirstViewController.swift in Sources */,
 				57FA624B274EEDF4001A83C3 /* Protocols.swift in Sources */,
 				57B5368F274D812600662465 /* AppDelegate.swift in Sources */,
