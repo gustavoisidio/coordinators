@@ -19,7 +19,6 @@ class FirstViewController: UIViewController, MainCoordinating{
     
     init(textField: String = "EMPTY") {
         self.valueTextField = textField
-        
         super.init(nibName: nil, bundle: nil)
     }
     

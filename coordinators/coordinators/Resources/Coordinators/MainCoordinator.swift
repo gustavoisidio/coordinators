@@ -9,13 +9,15 @@ import Foundation
 import UIKit
 
 class MainCoordinator: Coordinator {
-
+    var parentCoordinator: Coordinator?
+    
     var childCoordinators: [Coordinator]?
     
     var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.parentCoordinator = self
     }
     
     func start() {
@@ -43,9 +45,24 @@ class MainCoordinator: Coordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func flowToAuth () {
+        let newNavController = UINavigationController()
+        let child = AuthCoordinator(navigationController: newNavController)
+        childCoordinators?.append(child)
+        child.start()
+    }
+    
     
 }
 
 protocol MainCoordinating {
     var coordinator: MainCoordinator? { get set }
 }
+//protocol MainCoordinatorProtocol {
+//    var coordinator: MainCoordinator? { get set }
+//    var parentCoordinator: MainCoordinator? { get set }
+//    var childCoordinators: [MainCoordinator]? { get set }
+//    var navigationController: UINavigationController? { get set }
+//    
+//    func start ()
+//}

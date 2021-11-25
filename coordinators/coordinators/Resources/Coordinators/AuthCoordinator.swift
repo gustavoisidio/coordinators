@@ -9,46 +9,24 @@ import Foundation
 import UIKit
 
 class AuthCoordinator: Coordinator {
-    weak var parentCoordinator: MainCoordinator?
-    
-    var data: Any?
+    var parentCoordinator: Coordinator?
     
     var childCoordinators: [Coordinator]?
     
     var navigationController: UINavigationController?
     
-    init(navigationController: UINavigationController, data: Any?) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.data = data
+        self.parentCoordinator = MainCoordinator(navigationController: navigationController)
     }
     
-//    func eventOccurred(with type: Event, data: Any?) {
-//        switch type {
-//        case .buttonTapped: break
-//            // nothing
-//        case .loginTapped:
-//            login()
-//        case .registerTapped:
-//            register()
-//        }
-//        
-//    }
     
     func start() {
         // nothing
     }
     
-//    func login () {
-//        var vc: UIViewController & MainCoordinated = LoginViewController(data: data)
-//        vc.coordinator = self
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//    func register () {
-//        var vc: UIViewController & MainCoordinated = RegisterViewController(data: data)
-//        vc.coordinator = self
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-    
-    
+}
+
+protocol AuthCoordinating {
+    var coordinator: AuthCoordinator? { get set }
 }
