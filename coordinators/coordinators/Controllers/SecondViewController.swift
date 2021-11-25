@@ -8,54 +8,65 @@
 import UIKit
 
 class SecondViewController: UIViewController, MainCoordinating{
+
+    // MARK: - Initializers
     var coordinator: MainCoordinator?
     
+    lazy var contentView = SecondView()
+
     var data: String
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        title = "Second"
-        view.backgroundColor = .yellow
-        
-        makeUI()
-        
-    }
     
     init(data: String = "EMPTY") {
         self.data = data
         super.init(nibName: nil, bundle: nil)
     }
     
-    func makeUI() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-        let label = UILabel(frame: CGRect(x: 90, y: 280, width: 220, height: 55))
-        label.text = self.data
-        label.textAlignment = .center
-        label.textColor = .black
-        view.addSubview(label)
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        title = "Second"
+//        view.backgroundColor = .yellow
         
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 55))
-        button.center = view.center
-        button.backgroundColor = .systemGreen
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
-        button.setTitle("Login", for: .normal)
         
-        view.addSubview(button)
+        contentView.label.text = self.data
+        
+        setupView()
+        makeActions()
+        
+    }
+    
+    // MARK: - Views
+    func setupView() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(contentView)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: view.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    
+    // MARK: - Actions
+    func makeActions() {
+        contentView.button.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didTapRegister))
-
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
+    // MARK: - Coordinator calls
     @objc func didTapLogin () {
         coordinator?.login(textField: data)
     }

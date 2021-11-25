@@ -27,6 +27,7 @@ class FirstViewController: UIViewController, MainCoordinating{
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +38,8 @@ class FirstViewController: UIViewController, MainCoordinating{
 
     }
     
-    func makeActions() {
-        contentView.button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-    }
-    
+
+    // MARK: - Views
     func setupView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -53,6 +52,11 @@ class FirstViewController: UIViewController, MainCoordinating{
         ])
     }
 
+    
+    // MARK: - Actions
+    func makeActions() {
+        contentView.button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+    }
     
     @objc func didTapButton () {
         self.valueTextField = contentView.textInput.text

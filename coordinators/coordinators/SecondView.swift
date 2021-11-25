@@ -13,6 +13,8 @@ class SecondView: UIView, CoordinatorsViewProtocol {
     init(){
         super.init(frame: .zero)
         
+        backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.2039215714, blue: 0.03921568766, alpha: 1)
+        
         addSubviews()
         setupAutoLayout()
     }
@@ -23,49 +25,62 @@ class SecondView: UIView, CoordinatorsViewProtocol {
     
     // MARK: - SubViews
     internal func addSubviews() {
-        [].forEach {
-            //addSubview($0)
+        [label,
+         button].forEach {
+            stackView.addArrangedSubview($0)
             //$0.translatesAutoresizingMaskIntoConstraints = false
          }
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
     }
     
+    let label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+
+    let button: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemGreen
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Login", for: .normal)
+        return button
+    }()
+    
+    let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.alignment = .center
+        stack.distribution = .equalSpacing
+        stack.axis = .vertical
+        stack.spacing   = 16.0
+        return stack
+    }()
+
     // MARK: - AutoLayout
     internal func setupAutoLayout() {
-        [].forEach(NSLayoutConstraint.activate(_:))
-    }
-    
-    
-    /*
-     -> SubView Exemple
-     let enterBilTextView: UITextView = {
-         let textView = UITextView()
-         textView.text = "Enter bill total"
-         textView.font = UIFont.systemFont(ofSize: 22)
-         textView.textAlignment = .left
-         textView.alpha = 0.4
-         textView.isEditable = false
-         textView.isSelectable = false
-         return textView
-     }()
-    */
-    
-    /*
-    -> Autolayout Exemple
-    let enterBilTextViewConstraints = [
-        enterBilTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
-        enterBilTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 34),
-        enterBilTextView.rightAnchor.constraint(equalTo: self.rightAnchor),
-        enterBilTextView.heightAnchor.constraint(equalToConstant: 50)
-    ]
-    */
-    
+        
+        let labelConstraints = [
+            label.heightAnchor.constraint(equalToConstant: 50),
+            label.widthAnchor.constraint(equalToConstant: 300)
+        ]
+        
+        let buttonConstraints = [
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.widthAnchor.constraint(equalToConstant: 300)
+        ]
+        
+        let stackConstraints = [
+            stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 150),
+            stackView.widthAnchor.constraint(equalToConstant: 300)
+        ]
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+        [stackConstraints,
+         labelConstraints,
+         buttonConstraints].forEach(NSLayoutConstraint.activate(_:))
     }
-    */
-
 }
